@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <script>
+            var meta = document.createElement("meta");
+            meta.setAttribute('name','viewport');
+            meta.setAttribute('content','initial-scale='+ (1/window.devicePixelRatio) + ',user-scalable=no');
+            document.getElementsByTagName('head')[0].appendChild(meta);
+        </script>
+        
+        <link rel="stylesheet" href="css/vendor/BlackBerry-JQM-all.min.css">
+        <link rel="stylesheet" href="css/normalize.min.css">
+
+        <script src="js/vendor/modernizr-2.6.1.min.js"></script>
+        
+        <script src="js/vendor/jquery.min.js"></script>
+        <script src="js/jqm.config.js"></script>
+        <script src="js/vendor/jquery.mobile-1.2.0.js"></script>
+        <script src="js/vendor/BlackBerry-JQM.js"></script>
+        <script src="js/vendor/underscore-min.js"></script>
+        <script src="js/vendor/backbone-min.js"></script>
+        
+        <script src="js/main.js"></script>
+        <script src="js/routers/home.js"></script>
+        <script src="js/views/base.js"></script>
+        <script src="js/views/home.js"></script>
+        <script src="js/views/shared/header.js"></script>
+        <script src="js/views/shared/footer.js"></script>
+        <script src="js/utils/rendor.js"></script>
+    </head>
+    <body>
+        <!-- Rendor takes care of rendering the jQuery Mobile Content -->
+        <!-- Templates -->
+        <script id="footer" type="text/html">
+            <div id="action-bar-area" data-role="actionbar">
+                <div data-role="back"></div>
+            </div>
+        </script>
+    </body>
+</html>
