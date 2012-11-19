@@ -33,3 +33,5 @@ anvil --ci --host
 This will run anvil in **Continuous Integration** mode and host the site at **localhost:3080**. Anytime a change is made,
 the web browser will refresh automatically.
 
+**NOTE:** Outside of Windows, the best way to run node.js is through [nvm](https://github.com/creationix/nvm). 
+Follow their instructions to get up and running with nvm.
