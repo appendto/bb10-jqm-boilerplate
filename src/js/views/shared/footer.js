@@ -1,6 +1,7 @@
+// Setup a footer view.
 App.Views.Footer = Backbone.View.extend({
     initialize: function() {
-        // Set this up as a footer.
+        // Set this up as a jQuery Mobile footer.
         this.$el.attr({
             "data-role": "footer"
         });

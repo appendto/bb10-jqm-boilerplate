@@ -1,0 +1,51 @@
+<!DOCTYPE html>  <html> <head>   <title>rendor.js</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="jqm.config.html">                 jqm.config.js               </a>                                           <a class="source" href="main.html">                 main.js               </a>                                           <a class="source" href="home.html">                 home.js               </a>                                           <a class="source" href="rendor.html">                 rendor.js               </a>                                           <a class="source" href="base.html">                 base.js               </a>                                           <a class="source" href="home.html">                 home.js               </a>                                           <a class="source" href="footer.html">                 footer.js               </a>                                           <a class="source" href="header.html">                 header.js               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               rendor.js             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <p>Responsible for rendering the views and ensuring proper jQuery Mobile markup.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">App</span><span class="p">.</span><span class="nx">Rendor</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">views</span> <span class="o">=</span> <span class="nx">App</span><span class="p">.</span><span class="nx">Views</span><span class="p">,</span>
+        <span class="nx">currentView</span><span class="p">;</span>
+
+</pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>Initialize <code>Rendor</code>.</p>             </td>             <td class="code">               <div class="highlight"><pre>
+    <span class="kd">var</span> <span class="nx">init</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">App</span><span class="p">.</span><span class="nx">Vent</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="s2">&quot;render.view&quot;</span><span class="p">,</span> <span class="nx">render</span> <span class="p">);</span>
+    <span class="p">};</span>
+
+</pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>Create a new instance of the view being rendered.</p>             </td>             <td class="code">               <div class="highlight"><pre>
+    <span class="kd">var</span> <span class="nx">render</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">env</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">views</span><span class="p">[</span> <span class="nx">env</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span> <span class="p">]</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nx">changePage</span><span class="p">(</span> <span class="nx">currentView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">views</span><span class="p">[</span> <span class="nx">env</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span> <span class="p">](</span> <span class="nx">env</span><span class="p">.</span><span class="nx">data</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="p">};</span>
+
+</pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>Change the page to a different Backbone view.</p>             </td>             <td class="code">               <div class="highlight"><pre>
+    <span class="kd">var</span> <span class="nx">changePage</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">view</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">transition</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">defaultPageTransition</span><span class="p">;</span>
+
+</pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>The views will be the <code>page</code>.</p>             </td>             <td class="code">               <div class="highlight"><pre>
+        <span class="nx">view</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s2">&quot;data-role&quot;</span><span class="p">,</span> <span class="s2">&quot;page&quot;</span> <span class="p">);</span>
+
+        <span class="nx">$</span><span class="p">(</span> <span class="s2">&quot;body&quot;</span> <span class="p">).</span><span class="nx">append</span><span class="p">(</span> <span class="nx">view</span><span class="p">.</span><span class="nx">$el</span> <span class="p">);</span>
+        
+</pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>We don't want to slide the first page</p>             </td>             <td class="code">               <div class="highlight"><pre>
+        <span class="k">if</span> <span class="p">(</span> <span class="nx">view</span> <span class="k">instanceof</span> <span class="nx">App</span><span class="p">.</span><span class="nx">Views</span><span class="p">.</span><span class="nx">Home</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="nx">transition</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">firstPage</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+</pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <p>Call jQuery Mobile's manual change page function.</p>             </td>             <td class="code">               <div class="highlight"><pre>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">mobile</span><span class="p">.</span><span class="nx">changePage</span><span class="p">(</span> <span class="nx">view</span><span class="p">.</span><span class="nx">$el</span><span class="p">,</span> <span class="p">{</span>
+            <span class="nx">changeHash</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+            <span class="nx">transition</span><span class="o">:</span> <span class="nx">transition</span>
+        <span class="p">});</span>
+    <span class="p">};</span>
+
+</pre></div>             </td>           </tr>                               <tr id="section-8">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-8">&#182;</a>               </div>               <p>Only expose the init method.</p>             </td>             <td class="code">               <div class="highlight"><pre>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">init</span><span class="o">:</span> <span class="nx">init</span><span class="p">,</span>
+        <span class="nx">getCurrentView</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">currentView</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+
+<span class="p">}());</span>
+
+</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 

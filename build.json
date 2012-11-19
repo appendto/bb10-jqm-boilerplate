@@ -1,2 +1,5 @@
 {
+	"docco": {
+		"exclude": ["vendor"]
+	}
 }
